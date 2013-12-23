@@ -1,5 +1,10 @@
 # Serf Master
 
+[![Build
+Status](https://secure.travis-ci.org/garethr/serf-master.png)](http://travis-ci.org/garethr/serf-master)
+[![Coverage
+Status](https://coveralls.io/repos/garethr/serf-master/badge.png?branch=master)](https://coveralls.io/r/garethr/serf-master?branch=master)
+
 [Serf](http://www.serfdom.io/) is a very nice service discovery and
 orchestration framework which allows you to write scripts to react to
 different events across your infrastructure. However most of the
@@ -75,3 +80,4 @@ Serf Master is available on
 with:
 
     pip install serf_master
+
