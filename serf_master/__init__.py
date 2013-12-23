@@ -45,13 +45,3 @@ class SerfHandlerProxy(SerfHandler):
                 getattr(klass, self.event)()
             except AttributeError:
                 self.log("event not implemented by class")
-            except TypeError:
-                self.log("no handler for role")
-
-
-if __name__ == '__main__':
-    handler = SerfHandlerProxy()
-    handler.register('lb', LbHandler())
-    handler.register('web', WebHandler())
-    handler.register('default', WebHandler())
-    handler.run()
