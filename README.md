@@ -4,6 +4,8 @@
 Status](https://secure.travis-ci.org/garethr/serf-master.png)](http://travis-ci.org/garethr/serf-master)
 [![Coverage
 Status](https://coveralls.io/repos/garethr/serf-master/badge.png?branch=master)](https://coveralls.io/r/garethr/serf-master?branch=master)
+[![Code
+Health](https://landscape.io/github/garethr/serf-master/master/landscape.png)](https://landscape.io/github/garethr/serf-master/master)
 
 [Serf](http://www.serfdom.io/) is a very nice service discovery and
 orchestration framework which allows you to write scripts to react to
