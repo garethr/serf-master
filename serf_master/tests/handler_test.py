@@ -45,7 +45,6 @@ class TestSerfHandlerNegativeCases:
         }
         self.handler = SerfHandlerProxy()
         self.handler.log = MagicMock(return_value=True)
-        self.handler.handlers = {}
         assert len(self.handler.handlers) == 0
 
     def test_no_handler(self):
@@ -69,7 +68,6 @@ class TestSerfHandlerProxyCustomEvent:
             'SERF_USER_EVENT': 'implemented',
         }
         handler = SerfHandlerProxy()
-        handler.handlers = {}
         sample = SerfHandler()
         sample.implemented = MagicMock(return_value=True)
         assert len(handler.handlers) == 0
@@ -89,7 +87,6 @@ class TestSerfHandlerProxyStandardEvent:
         self.handler = SerfHandlerProxy()
         self.sample = SerfHandler()
         self.sample.member_join = MagicMock(return_value=True)
-        self.handler.handlers = {}
 
     def test_standard_events_called(self):
         self.handler.register('default', self.sample)
