@@ -22,5 +22,6 @@ setup(name='serf_master',
     tests_require=[
         'nose',
         'mock',
+        'coverage',
     ],
     zip_safe=False)
