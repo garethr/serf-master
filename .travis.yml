@@ -4,4 +4,4 @@ python:
   - "3.3"
 install: pip install coveralls coverage
 script: coverage run --rcfile=.coverage.rc setup.py test
-after_success: coveralls --config_file=.coverage.rc
+after_success: coveralls
