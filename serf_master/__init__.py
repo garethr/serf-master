@@ -13,7 +13,7 @@ class SerfHandler(object):
             self.event = os.environ['SERF_EVENT'].replace('-', '_')
 
     def log(self, message):
-        print message
+        print(message)
 
     def run(self, command):
         pass
@@ -21,7 +21,9 @@ class SerfHandler(object):
 
 class SerfHandlerProxy(SerfHandler):
 
-    handlers = {}
+    def __init__(self):
+        super(SerfHandlerProxy, self).__init__()
+        self.handlers = {}
 
     def register(self, role, handler):
         self.handlers[role] = handler
