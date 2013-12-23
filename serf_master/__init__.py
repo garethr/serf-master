@@ -15,9 +15,6 @@ class SerfHandler(object):
     def log(self, message):
         print(message)
 
-    def run(self, command):
-        pass
-
 
 class SerfHandlerProxy(SerfHandler):
 
