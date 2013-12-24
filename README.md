@@ -23,7 +23,8 @@ something with the following properties:
   deciding what runs where.
 * Single event handler. I'd rather deal with logic about user events or
   roles within my code, rather than parameters to serf.
-
+* Make handlers sharable. You can simply extend `SerfHandler` and
+  package up your own handlers, say `serf_master_haproxy`.
 
 Serf Master tries to do this, presented as a very small Python framework
 with no dependencies. Here's an example:
@@ -38,6 +39,7 @@ want to be able to trigger a deploy. For the database servers we want to
 be able to trigger a backup custom event.
 
 ```python
+    #!/usr/bin/env python 
     from serf_handler import SerfHandler, SerfHandlerProxy
 
     class WedHandler(SerfHandler):
