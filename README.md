@@ -37,7 +37,7 @@ added to the cluster (maybe to tell a load balancer to reload?) and we
 want to be able to trigger a deploy. For the database servers we want to
 be able to trigger a backup custom event.
 
-
+```python
     from serf_handler import SerfHandler, SerfHandlerProxy
 
     class WedHandler(SerfHandler):
@@ -58,16 +58,20 @@ be able to trigger a backup custom event.
         handler.register('web', WebHandler())
         handler.register('db', DatabaseHandler())
         handler.run()
-
+```
 
 The important parts are:
 
+```python
     handler.register('web', WebHandler())
+```
 
 This says if the Serf role is `web` then use the `WebHandler` class for
 any events.
 
+```python
     def member_join(self):
+```
 
 This says for the `member-join` serf event we should execute the code
 we write here.
