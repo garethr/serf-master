@@ -39,40 +39,40 @@ want to be able to trigger a deploy. For the database servers we want to
 be able to trigger a backup custom event.
 
 ```python
-    #!/usr/bin/env python 
-    from serf_handler import SerfHandler, SerfHandlerProxy
+#!/usr/bin/env python 
+from serf_handler import SerfHandler, SerfHandlerProxy
 
-    class WedHandler(SerfHandler):
-        def deploy(self):
-          # run commands here to do with deployment
+class WedHandler(SerfHandler):
+    def deploy(self):
+      # run commands here to do with deployment
 
-        def member_join(self):
-          # maybe rebalance the load balancer
-    
-
-    class DatabaseHandler(SerfHandler):
-        def backup(self):
-          # run commands here to do with backups
+    def member_join(self):
+      # maybe rebalance the load balancer
 
 
-    if __name__ == '__main__':
-        handler = SerfHandlerProxy()
-        handler.register('web', WebHandler())
-        handler.register('db', DatabaseHandler())
-        handler.run()
+class DatabaseHandler(SerfHandler):
+    def backup(self):
+      # run commands here to do with backups
+
+
+if __name__ == '__main__':
+    handler = SerfHandlerProxy()
+    handler.register('web', WebHandler())
+    handler.register('db', DatabaseHandler())
+    handler.run()
 ```
 
 The important parts are:
 
 ```python
-    handler.register('web', WebHandler())
+handler.register('web', WebHandler())
 ```
 
 This says if the Serf role is `web` then use the `WebHandler` class for
 any events.
 
 ```python
-    def member_join(self):
+def member_join(self):
 ```
 
 This says for the `member-join` serf event we should execute the code
