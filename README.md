@@ -80,6 +80,18 @@ we write here.
 
 See the unit tests for examples of now this can be tested.
 
+## Configuration
+
+Using this with Serf is simple, just wire up all the event handlers to
+your script like so:
+
+```bash
+serf agent -event-handler /opt/your/script.py
+```
+
+Although you could restrict the events which are managed by this handler
+the whole point of serf-master is to move the handler definition into
+code and away from command line flags.
 
 ## Installation
 
