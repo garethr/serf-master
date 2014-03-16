@@ -2,18 +2,20 @@
 
 import os
 import sys
+import logging
 
 class SerfHandler(object):
     def __init__(self):
         self.name = os.environ['SERF_SELF_NAME']
         self.role = os.environ['SERF_SELF_ROLE']
+        self.logger = logging.getLogger(type(self).__name__)
         if os.environ['SERF_EVENT'] == 'user':
             self.event = os.environ['SERF_USER_EVENT']
         else:
             self.event = os.environ['SERF_EVENT'].replace('-', '_')
 
     def log(self, message):
-        print(message)
+        self.logger.info(message)
 
 
 class SerfHandlerProxy(SerfHandler):
