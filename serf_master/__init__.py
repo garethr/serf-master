@@ -7,7 +7,7 @@ import logging
 class SerfHandler(object):
     def __init__(self):
         self.name = os.environ['SERF_SELF_NAME']
-        self.role = os.environ['SERF_SELF_ROLE']
+        self.role = os.environ.get('SERF_TAG_ROLE') or os.environ.get('SERF_SELF_ROLE')
         self.logger = logging.getLogger(type(self).__name__)
         if os.environ['SERF_EVENT'] == 'user':
             self.event = os.environ['SERF_USER_EVENT']

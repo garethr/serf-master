@@ -35,6 +35,39 @@ class TestSerfHandler:
         assert self.handler.event == 'deploy'
 
 
+class TestSerfHandlerTags:
+
+    def setup(self):
+        os.environ = {
+            'SERF_SELF_NAME': 'null',
+            'SERF_TAG_ROLE': 'bob',
+            'SERF_EVENT': 'null',
+        }
+        self.handler = SerfHandlerProxy()
+        self.handler.log = MagicMock(return_value=True)
+        assert len(self.handler.handlers) == 0
+
+    def test_role_set_from_env(self):
+        assert self.handler.role == 'bob'
+
+
+class TestSerfHandlerRoleOverloading:
+
+    def setup(self):
+        os.environ = {
+            'SERF_SELF_NAME': 'null',
+            'SERF_SELF_ROLE': 'jim',
+            'SERF_TAG_ROLE': 'bob',
+            'SERF_EVENT': 'null',
+        }
+        self.handler = SerfHandlerProxy()
+        self.handler.log = MagicMock(return_value=True)
+        assert len(self.handler.handlers) == 0
+
+    def test_role_set_from_env(self):
+        assert self.handler.role == 'bob'
+
+
 class TestSerfHandlerNegativeCases:
 
     def setup(self):
