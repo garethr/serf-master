@@ -40,7 +40,7 @@ be able to trigger a backup custom event.
 
 ```python
 #!/usr/bin/env python 
-from serf_handler import SerfHandler, SerfHandlerProxy
+from serf_master import SerfHandler, SerfHandlerProxy
 
 class WebHandler(SerfHandler):
     def deploy(self):
