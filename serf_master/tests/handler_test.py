@@ -14,6 +14,7 @@ class TestSerfHandler:
             'SERF_SELF_ROLE': 'web',
             'SERF_EVENT': 'member-join',
             'SERF_USER_EVENT': 'deploy',
+            'SERF_QUERY_NAME': 'question',
         }
         self.load_handler()
 
@@ -33,6 +34,13 @@ class TestSerfHandler:
         os.environ['SERF_EVENT'] = 'user'
         self.load_handler()
         assert self.handler.event == 'deploy'
+
+    def test_query(self):
+        os.environ['SERF_EVENT'] = 'query'
+        self.load_handler()
+        assert self.handler.event == 'question'
+
+
 
 
 class TestSerfHandlerTags:

@@ -10,6 +10,8 @@ class SerfHandler(object):
         self.logger = logging.getLogger(type(self).__name__)
         if os.environ['SERF_EVENT'] == 'user':
             self.event = os.environ['SERF_USER_EVENT']
+        elif os.environ['SERF_EVENT'] == 'query':
+            self.event = os.environ['SERF_QUERY_NAME']
         else:
             self.event = os.environ['SERF_EVENT'].replace('-', '_')
 
